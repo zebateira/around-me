@@ -36,47 +36,11 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-
-        <RelativeLayout
-            android:id="@+id/RelativeLayout1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="31dp" >
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:orientation="vertical" >
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:text="@string/btn_back" />
-
-        <ExpandableListView
-            android:id="@+id/expandableListView1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/btnBack"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" >
-
-        </ExpandableListView>
-
-    </RelativeLayout>
+    <ExpandableListView android:id="@+id/expandable_list"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:transcriptMode="alwaysScroll"
+                        android:cacheColorHint="#00000000"
+                        android:listSelector="@android:color/transparent"/>
 
 </LinearLayout>

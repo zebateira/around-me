@@ -10,7 +10,7 @@ import android.os.Bundle;
  *
  */
 
-public class ShowMapActivity extends DashboardActivity 
+public class ShowMapActivity extends SuperActivity 
 {
 
 /**

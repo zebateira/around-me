@@ -1,22 +1,23 @@
 package com.feup.aroundme;
 
 import com.feup.aroundme.R;
-import com.feup.aroundme.R.layout;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * This is a simple activity that demonstrates the dashboard user interface pattern.
- *
- */
 
-public class HomeActivity extends SuperActivity 
+public abstract class SuperActivity extends Activity 
 {
 
 /**
  * onCreate - called when the activity is first created.
+ *
  * Called when the activity is first created. 
  * This is where you should do all of your normal static set up: create views, bind data to lists, etc. 
  * This method also provides you with a Bundle containing the activity's previously frozen state, if there was one.
@@ -28,16 +29,7 @@ public class HomeActivity extends SuperActivity
 protected void onCreate(Bundle savedInstanceState) 
 {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_home);
-    
-    Button skip = (Button) findViewById(R.id.btnSkip);
-	skip.setOnClickListener(new View.OnClickListener() {
-		@Override
-		public void onClick(View arg0) {
-			onClickFeature(arg0);
-		}
-		
-	});
+    //setContentView(R.layout.activity_default);
 }
     
 /**
@@ -128,9 +120,91 @@ protected void onStop ()
  */
 // Click Methods
 
+/**
+ * Handle the click on the home button.
+ * 
+ * @param v View
+ * @return void
+ */
+
+public void onClickHome (View v)
+{
+    goHome (this);
+}
+
+/**
+ * Handle the click of a Feature button.
+ * 
+ * @param v View
+ * @return void
+ */
+
+public void onClickFeature (View v)
+{
+    int id = v.getId ();
+    switch (id) {
+      case R.id.btnSkip :
+           startActivity (new Intent(getApplicationContext(), EventsMenuCategoriesActivity.class));
+           break;
+      default: 
+    	   break;
+    }
+}
 
 /**
  */
 // More Methods
+
+/**
+ * Go back to the home activity.
+ * 
+ * @param context Context
+ * @return void
+ */
+
+public void goHome(Context context) 
+{
+    final Intent intent = new Intent(context, HomeActivity.class);
+    intent.setFlags (Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    context.startActivity (intent);
+}
+
+/**
+ * Use the activity label to set the text in the activity's title text view.
+ * The argument gives the name of the view.
+ *
+ * <p> This method is needed because we have a custom title bar rather than the default Android title bar.
+ * See the theme definitons in styles.xml.
+ * 
+ * @param textViewId int
+ * @return void
+ */
+
+public void setTitleFromActivityLabel (int textViewId)
+{
+    TextView tv = (TextView) findViewById (textViewId);
+    if (tv != null) tv.setText (getTitle ());
+} // end setTitleText
+
+/**
+ * Show a string on the screen via Toast.
+ * 
+ * @param msg String
+ * @return void
+ */
+
+public void toast (String msg)
+{
+    Toast.makeText (getApplicationContext(), msg, Toast.LENGTH_SHORT).show ();
+} // end toast
+
+/**
+ * Send a message to the debug log and display it using Toast.
+ */
+public void trace (String msg) 
+{
+    Log.d("Demo", msg);
+    toast (msg);
+}
 
 } // end class

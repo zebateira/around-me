@@ -10,7 +10,7 @@ import android.os.Bundle;
  *
  */
 
-public class FacebookGoodiesActivity extends DashboardActivity 
+public class FacebookGoodiesActivity extends SuperActivity 
 {
 
 /**

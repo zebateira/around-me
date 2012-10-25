@@ -125,6 +125,7 @@ containing a value of this type.
     }
     public static final class id {
         public static final int Button01=0x7f06000e;
+        public static final int CheckBox01=0x7f060021;
         public static final int RelativeLayout1=0x7f06000a;
         public static final int blocks_now=0x7f060007;
         public static final int blocks_ruler=0x7f060006;
@@ -145,8 +146,14 @@ containing a value of this type.
         public static final int dialog_moderator=0x7f060004;
         public static final int dialog_wave=0x7f060005;
         public static final int editText1=0x7f06000c;
-        public static final int expandableListView1=0x7f060012;
+        public static final int expandable_list=0x7f060012;
         public static final int linearLayout1=0x7f06000b;
+        public static final int list_item=0x7f06001d;
+        public static final int list_item_child=0x7f06001b;
+        public static final int list_item_text_child=0x7f06001c;
+        public static final int list_item_text_view=0x7f06001e;
+        public static final int mainListView=0x7f06001f;
+        public static final int rowTextView=0x7f060020;
         public static final int textView1=0x7f060009;
         public static final int title_container=0x7f060000;
         public static final int title_logo=0x7f060001;
@@ -160,56 +167,40 @@ containing a value of this type.
         public static final int activity_settings=0x7f030004;
         public static final int activity_show_map=0x7f030005;
         public static final int home=0x7f030006;
-        public static final int main=0x7f030007;
+        public static final int list_item_child=0x7f030007;
+        public static final int list_item_parent=0x7f030008;
+        public static final int main=0x7f030009;
+        public static final int simplerow=0x7f03000a;
     }
     public static final class string {
-        public static final int about_intro=0x7f07001d;
         public static final int app_name=0x7f070001;
         /**  Buttons 
          */
-        public static final int btnFB=0x7f07001f;
-        public static final int btnLeave=0x7f070022;
-        public static final int btnSettings=0x7f070021;
-        public static final int btnSkip=0x7f070020;
-        public static final int btn_back=0x7f070026;
-        public static final int btn_fb_friends_going=0x7f070027;
-        public static final int btn_fb_going=0x7f070025;
-        public static final int btn_fb_invite_friends=0x7f070028;
-        public static final int btn_fb_options=0x7f070024;
-        public static final int btn_route=0x7f070023;
-        public static final int default_intro=0x7f070016;
-        public static final int description_about=0x7f070003;
-        public static final int description_feature1=0x7f070006;
-        public static final int description_feature2=0x7f070007;
-        public static final int description_feature3=0x7f070008;
-        public static final int description_feature4=0x7f070009;
-        public static final int description_feature5=0x7f07000a;
-        public static final int description_feature6=0x7f07000b;
-        public static final int description_home=0x7f070004;
+        public static final int btnFB=0x7f070006;
+        public static final int btnLeave=0x7f070009;
+        public static final int btnSettings=0x7f070008;
+        public static final int btnSkip=0x7f070007;
+        public static final int btn_back=0x7f07000d;
+        public static final int btn_fb_friends_going=0x7f07000e;
+        public static final int btn_fb_going=0x7f07000c;
+        public static final int btn_fb_invite_friends=0x7f07000f;
+        public static final int btn_fb_options=0x7f07000b;
+        public static final int btn_route=0x7f07000a;
         public static final int description_logo=0x7f070002;
-        public static final int description_search=0x7f070005;
-        public static final int feature1_intro=0x7f070017;
-        public static final int feature2_intro=0x7f070018;
-        public static final int feature3_intro=0x7f070019;
-        public static final int feature4_intro=0x7f07001a;
-        public static final int feature5_intro=0x7f07001b;
-        public static final int feature6_intro=0x7f07001c;
         public static final int hello=0x7f070000;
-        public static final int search_intro=0x7f07001e;
-        public static final int title_about=0x7f07000d;
-        public static final int title_feature1=0x7f070010;
-        public static final int title_feature2=0x7f070011;
-        public static final int title_feature3=0x7f070012;
-        public static final int title_feature4=0x7f070013;
-        public static final int title_feature5=0x7f070014;
-        public static final int title_feature6=0x7f070015;
-        public static final int title_home=0x7f07000e;
-        public static final int title_search=0x7f07000f;
-        public static final int title_text=0x7f07000c;
+        /**  Lists 
+         */
+        public static final int list_s_categories=0x7f070012;
+        public static final int list_s_date=0x7f070014;
+        public static final int list_s_landmark=0x7f070015;
+        public static final int list_s_radius=0x7f070013;
+        public static final int title_about=0x7f070004;
+        public static final int title_home=0x7f070005;
+        public static final int title_text=0x7f070003;
         /**  Titles 
          */
-        public static final int title_text_event=0x7f070029;
-        public static final int title_text_fb_goodies=0x7f07002a;
+        public static final int title_text_event=0x7f070010;
+        public static final int title_text_fb_goodies=0x7f070011;
     }
     public static final class style {
         public static final int HomeButton=0x7f080005;

@@ -10,7 +10,7 @@ import android.os.Bundle;
  *
  */
 
-public class SettingsActivity extends DashboardActivity 
+public class SettingsActivity extends SuperActivity 
 {
 
 /**

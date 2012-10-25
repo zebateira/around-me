@@ -10,7 +10,7 @@ import android.os.Bundle;
  *
  */
 
-public class EventDescriptionActivity extends DashboardActivity 
+public class EventDescriptionActivity extends SuperActivity 
 {
 
 /**
