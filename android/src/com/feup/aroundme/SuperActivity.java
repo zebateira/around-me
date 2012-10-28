@@ -144,7 +144,7 @@ public void onClickFeature (View v)
     int id = v.getId ();
     switch (id) {
       case R.id.btnSkip :
-           startActivity (new Intent(getApplicationContext(), EventsMenuCategoriesActivity.class));
+           startActivity (new Intent(getApplicationContext(), EventsMenuActivity.class));
            break;
       default: 
     	   break;

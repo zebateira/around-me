@@ -15,16 +15,18 @@
          </intent-filter>
       </activity>
 
+      <activity android:name=".EventsDescriptionActivity"
+      	android:theme="@style/Theme.D1"/>
+      
+      <activity android:name=".EventsFacebookListActivity"
+      	android:theme="@style/Theme.D1"/>    
+      
       <activity android:name=".EventsMenuActivity"
             android:theme="@style/Theme.D1"/>
       
       <activity android:name=".EventsMenuCategoriesActivity"
-            android:theme="@style/Theme.D1"/>
-      
-      
-      <activity android:name=".EventsDescriptionActivity"
-            android:theme="@style/Theme.D1"/>
-      
+            android:theme="@style/Theme.D1"/>      
+          
       <activity android:name=".FacebookGoodiesActivity"
             android:theme="@style/Theme.D1"/>
       
@@ -32,6 +34,9 @@
             android:theme="@style/Theme.D1"/>
 
       <activity android:name=".ShowMapActivity"
+            android:theme="@style/Theme.D1"/>
+      
+      <activity android:name=".SuperActivity"
             android:theme="@style/Theme.D1"/>
       
       </application>

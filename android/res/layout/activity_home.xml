@@ -46,20 +46,6 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="31dp" >
 
-            <Button
-                android:id="@+id/btnSettings"
-                android:layout_width="135dp"
-                android:layout_height="wrap_content"
-                android:text="@string/btnSettings" />
-
-            <Button
-                android:id="@+id/btnLeave"
-                android:layout_width="135dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:text="@string/btnLeave" />
-
         </RelativeLayout>
 
         <LinearLayout
@@ -82,6 +68,23 @@
                 android:layout_height="wrap_content"
                 android:text="@string/btnSkip" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="@string/btnSettings" />
+
+        <Button
+            android:id="@+id/btnLeave"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/btnLeave" />
+
     </RelativeLayout>
 
 </LinearLayout>

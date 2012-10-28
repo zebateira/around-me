@@ -20,6 +20,16 @@
     <string name="btn_back">Voltar</string>
     <string name="btn_fb_friends_going">Amigos que vão</string>
     <string name="btn_fb_invite_friends">Convidar amigos</string>
+    <string name="btn_categories">Categorias de eventos</string>
+    <string name="btn_radius">Definir raio de localização de eventos</string>
+    <string name="btn_date">Escolher eventos por data</string>
+    <string name="btn_landmarks">Escolher eventos por zona</string>
+    <string name="btn_show_events">Mostrar eventos</string>
+    <string name="btn_limit_zones">Limitar zonas</string>
+    <string name="btn_settings_fb">Definições de Facebook</string>
+    <string name="btn_save">Gravar</string>
+    <string name="btn_add_event">Acrescenter aos meus eventos</string>
+    
     
     <!-- Titles -->
     <string name="title_text_event">Descrição do Evento</string>
@@ -31,6 +41,20 @@
     <string name="list_s_radius">Definir raio de localização de eventos</string>
     <string name="list_s_date">Escolher eventos por data</string>
     <string name="list_s_landmark">Escolher eventos por zona da cidade</string>
+    
+    <!-- Categories -->
+    <string name="categoriesPrompt">Tipo de evento</string>
+ 
+    <string-array name="categories">
+	    <item>Música</item>
+	    <item>Teatro</item>
+	    <item>Festivais</item>
+	    <item>Exposições</item>
+	    <item>Ar Livre</item>
+	    <item>Jovem</item>
+	    <item>Outros</item>
+	</string-array>
+    
     
 
 </resources>
