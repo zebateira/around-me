@@ -27,7 +27,7 @@ protected void onCreate(Bundle savedInstanceState)
     findViewById(R.id.spinnerCategories).setVisibility(View.GONE);
     
     // spinnerfill
-
+    
 }
     
 } // end class

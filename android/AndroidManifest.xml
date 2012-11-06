@@ -26,11 +26,17 @@
       
       <activity android:name=".EventsMenuCategoriesActivity"
             android:theme="@style/Theme.D1"/>      
-          
+      
+     <activity android:name=".other.fb.FacebookConnect"
+            android:theme="@style/Theme.D1"/>
+      
       <activity android:name=".FacebookGoodiesActivity"
             android:theme="@style/Theme.D1"/>
       
       <activity android:name=".SettingsActivity"
+            android:theme="@style/Theme.D1"/>
+      
+            <activity android:name=".SettingsFacebookActivity"
             android:theme="@style/Theme.D1"/>
 
       <activity android:name=".ShowMapActivity"
@@ -39,7 +45,18 @@
       <activity android:name=".SuperActivity"
             android:theme="@style/Theme.D1"/>
       
+      <uses-sdk android:minSdkVersion="7" />
+      <uses-library android:name="com.google.android.maps"/>
       </application>
-    <uses-sdk android:minSdkVersion="7" />
+      
+    
+    
+    
+     <!-- Connect to Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    
+    
 
 </manifest> 

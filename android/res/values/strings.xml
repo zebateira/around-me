@@ -2,15 +2,15 @@
 <resources>
     <string name="hello">Choose one of the features below.</string>
 
-    <string name="app_name">Dashboard Demo</string>
-    <string name="description_logo">Demo</string>
+    <string name="app_name">Around Me</string>
+    <string name="description_logo">Around Me</string>
 
     <string name="title_text">Around Me</string>
     <string name="title_about">About</string>
     <string name="title_home">Home</string>
 
     <!-- Buttons -->
-    <string name="btnFB"></string>
+    <string name="btnFB">Entrar com o Facebook</string>
     <string name="btnSkip">Ver eventos</string>
     <string name="btnSettings">Definições</string>
     <string name="btnLeave">Sair</string>
@@ -29,6 +29,7 @@
     <string name="btn_settings_fb">Definições de Facebook</string>
     <string name="btn_save">Gravar</string>
     <string name="btn_add_event">Acrescenter aos meus eventos</string>
+    <string name="btn_log_out">Terminar sessão Facebook</string>
     
     
     <!-- Titles -->

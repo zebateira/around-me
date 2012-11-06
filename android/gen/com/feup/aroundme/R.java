@@ -121,50 +121,56 @@ containing a value of this type.
         public static final int title_height=0x7f050000;
     }
     public static final class drawable {
-        public static final int comment_icon=0x7f020000;
-        public static final int comment_icon2=0x7f020001;
-        public static final int comment_icon3=0x7f020002;
-        public static final int icon=0x7f020003;
+        public static final int androidmarker=0x7f020000;
+        public static final int close=0x7f020001;
+        public static final int comment_icon=0x7f020002;
+        public static final int comment_icon2=0x7f020003;
+        public static final int comment_icon3=0x7f020004;
+        public static final int facebook_icon=0x7f020005;
+        public static final int icon=0x7f020006;
+        public static final int marker=0x7f020007;
     }
     public static final class id {
         public static final int Button01=0x7f06000e;
-        public static final int CheckBox01=0x7f06002c;
+        public static final int CheckBox01=0x7f06002e;
         public static final int RelativeLayout1=0x7f06000a;
         public static final int blocks_now=0x7f060007;
         public static final int blocks_ruler=0x7f060006;
-        public static final int btnAddEvent=0x7f060025;
+        public static final int btnAddEvent=0x7f060027;
         public static final int btnBack=0x7f060011;
         public static final int btnCategories=0x7f060013;
         public static final int btnDate=0x7f060017;
-        public static final int btnFB=0x7f06001e;
+        public static final int btnFB=0x7f060020;
         public static final int btnFBfriends=0x7f06001a;
         public static final int btnFBgoing=0x7f060010;
         public static final int btnFBinvite=0x7f06001b;
         public static final int btnFBoptions=0x7f06000f;
         public static final int btnLandmarks=0x7f060018;
-        public static final int btnLeave=0x7f060021;
+        public static final int btnLeave=0x7f060023;
         public static final int btnLike=0x7f06001d;
-        public static final int btnLimitZones=0x7f060022;
+        public static final int btnLimitZones=0x7f060024;
+        public static final int btnLogOut=0x7f06001e;
         public static final int btnRadius=0x7f060014;
         public static final int btnRoute=0x7f06000d;
-        public static final int btnSave=0x7f060024;
-        public static final int btnSettings=0x7f060020;
-        public static final int btnSettingsFB=0x7f060023;
+        public static final int btnSave=0x7f06001f;
+        public static final int btnSettings=0x7f060022;
+        public static final int btnSettingsFB=0x7f060025;
         public static final int btnShare=0x7f06001c;
         public static final int btnShowEvents=0x7f060012;
-        public static final int btnSkip=0x7f06001f;
+        public static final int btnSkip=0x7f060021;
         public static final int db1_root=0x7f060008;
         public static final int dialog_discard_confirm=0x7f060003;
         public static final int dialog_moderator=0x7f060004;
         public static final int dialog_wave=0x7f060005;
         public static final int editText1=0x7f06000c;
         public static final int linearLayout1=0x7f06000b;
-        public static final int list_item=0x7f060028;
-        public static final int list_item_child=0x7f060026;
-        public static final int list_item_text_child=0x7f060027;
-        public static final int list_item_text_view=0x7f060029;
-        public static final int mainListView=0x7f06002a;
-        public static final int rowTextView=0x7f06002b;
+        public static final int list_item=0x7f06002a;
+        public static final int list_item_child=0x7f060028;
+        public static final int list_item_text_child=0x7f060029;
+        public static final int list_item_text_view=0x7f06002b;
+        public static final int mainListView=0x7f06002c;
+        public static final int mapview=0x7f060026;
+        public static final int rowTextView=0x7f06002d;
         public static final int seekBar1=0x7f060015;
         public static final int spinnerCategories=0x7f060019;
         public static final int textView1=0x7f060009;
@@ -177,14 +183,15 @@ containing a value of this type.
         public static final int activity_event_description=0x7f030000;
         public static final int activity_events_menu=0x7f030001;
         public static final int activity_facebook_goodies=0x7f030002;
-        public static final int activity_home=0x7f030003;
-        public static final int activity_settings=0x7f030004;
-        public static final int activity_show_map=0x7f030005;
-        public static final int events_facebook_list=0x7f030006;
-        public static final int list_item_child=0x7f030007;
-        public static final int list_item_parent=0x7f030008;
-        public static final int main=0x7f030009;
-        public static final int simplerow=0x7f03000a;
+        public static final int activity_facebook_settings=0x7f030003;
+        public static final int activity_home=0x7f030004;
+        public static final int activity_settings=0x7f030005;
+        public static final int activity_show_map=0x7f030006;
+        public static final int events_facebook_list=0x7f030007;
+        public static final int list_item_child=0x7f030008;
+        public static final int list_item_parent=0x7f030009;
+        public static final int main=0x7f03000a;
+        public static final int simplerow=0x7f03000b;
     }
     public static final class string {
         public static final int app_name=0x7f070001;
@@ -204,6 +211,7 @@ containing a value of this type.
         public static final int btn_fb_options=0x7f07000b;
         public static final int btn_landmarks=0x7f070013;
         public static final int btn_limit_zones=0x7f070015;
+        public static final int btn_log_out=0x7f070019;
         public static final int btn_radius=0x7f070011;
         public static final int btn_route=0x7f07000a;
         public static final int btn_save=0x7f070017;
@@ -211,22 +219,22 @@ containing a value of this type.
         public static final int btn_show_events=0x7f070014;
         /**  Categories 
          */
-        public static final int categoriesPrompt=0x7f07001f;
+        public static final int categoriesPrompt=0x7f070020;
         public static final int description_logo=0x7f070002;
         public static final int hello=0x7f070000;
         /**  Lists 
          */
-        public static final int list_s_categories=0x7f07001b;
-        public static final int list_s_date=0x7f07001d;
-        public static final int list_s_landmark=0x7f07001e;
-        public static final int list_s_radius=0x7f07001c;
+        public static final int list_s_categories=0x7f07001c;
+        public static final int list_s_date=0x7f07001e;
+        public static final int list_s_landmark=0x7f07001f;
+        public static final int list_s_radius=0x7f07001d;
         public static final int title_about=0x7f070004;
         public static final int title_home=0x7f070005;
         public static final int title_text=0x7f070003;
         /**  Titles 
          */
-        public static final int title_text_event=0x7f070019;
-        public static final int title_text_fb_goodies=0x7f07001a;
+        public static final int title_text_event=0x7f07001a;
+        public static final int title_text_fb_goodies=0x7f07001b;
     }
     public static final class style {
         public static final int HomeButton=0x7f090005;

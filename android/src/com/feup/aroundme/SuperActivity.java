@@ -144,8 +144,17 @@ public void onClickFeature (View v)
     int id = v.getId ();
     switch (id) {
       case R.id.btnSkip :
-           startActivity (new Intent(getApplicationContext(), EventsMenuActivity.class));
+           startActivity (new Intent(getApplicationContext(), ShowMapActivity.class));
            break;
+      case R.id.btnSettings :
+          startActivity (new Intent(getApplicationContext(), SettingsActivity.class));
+          break;
+      case R.id.btnSettingsFB :
+          startActivity (new Intent(getApplicationContext(), SettingsFacebookActivity.class));
+          break;
+      case R.id.btnBack:
+    	  onBackPressed();
+    	  break;
       default: 
     	   break;
     }
