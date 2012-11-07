@@ -1,4 +1,4 @@
 AroundMe
 ========
 
-An Android App to show events on your city, based on location, genre, etc.
+Rails server suport for AroundMe clients that show events on your city, based on location, genre, etc.
