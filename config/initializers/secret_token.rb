@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-AroundMe::Application.config.secret_token = '1e2f95fed7bbe219e5c599e281a3c9187d37239a9d48d92b5a27465a40377bf648ce290e2fb20844647612b5a9b6085edf208d063180474a4a2304bc78348517'
+AroundMe::Application.config.secret_token = 'a22fe2844ac59b1203118ccaf8307de87e6211a1074f6a31e7ceea4374ece68e03e7141162f6322124a7dccf9203eccac6ab905954b13f4aa8a83e4fe5c9bd7c'
