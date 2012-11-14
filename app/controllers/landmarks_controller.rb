@@ -7,7 +7,7 @@ class LandmarksController < ApplicationController
   # GET /landmarks.json
   def index
     @landmarks = Landmark.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @landmarks }
@@ -19,8 +19,6 @@ class LandmarksController < ApplicationController
   def show
     @landmark = Landmark.find(params[:id])
     
-    # TODO change json rendering to match fb struture
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @landmark }
@@ -47,38 +45,30 @@ class LandmarksController < ApplicationController
   # POST /landmarks.json
   def create
     @landmark = Landmark.new(params[:landmark])
-
-    uri = URI.parse("http://graph.facebook.com/" + @landmark.username) # TODO: refactor 
+    
+    uri = URI.parse(FB_API + @landmark.username) # TODO: refactor
 
     response = Net::HTTP.get_response(uri)
     http = Net::HTTP.new(uri.host, uri.port)
     
     response = http.request(Net::HTTP::Get.new(uri.request_uri))
-    @response = JSON.parse response.body
+    @response = JSON.parse( response.body )
     
-    @landmark.name = @response['name']
-    @landmark.about = @response['about']
-    @landmark.category = @response['category']
-    @landmark.checkins = @response['checkins']
-    @landmark.description = @response['description']
-    @landmark.general_info = @response['general_info']
-    @landmark.id = @response['id']
-    @landmark.is_published = @response['is_published']
-    @landmark.likes = @response['likes']
-    @landmark.link = @response['link']
-    @landmark.location_city = @response['location']['city']
-    @landmark.location_country = @response['location']['country']
-    @landmark.location_latitude = @response['location']['latitude']
-    @landmark.location_longitude = @response['location']['longitude']
-    @landmark.location_street = @response['location']['street']
-    @landmark.location_zip = @response['location']['zip']
-    @landmark.phone = @response['phone']
-    @landmark.public_transit = @response['public_transit']
-    @landmark.talking_about_count = @response['talking_about_count']
-    @landmark.website = @response['website']
-    @landmark.were_here_count = @response['were_here_count']
+    deletedElements = {}
+    @response.each { |key, value| 
+      if LANDMARKS_DEPTH1_ELEMS.include?(key)
+        deletedElements[key] = @response.delete(key)
+      end
+    }
 
-
+    @landmark                     = Landmark.create @response
+    @landmark.location_city       = deletedElements['location']['city']
+    @landmark.location_country    = deletedElements['location']['country']
+    @landmark.location_latitude   = deletedElements['location']['latitude']
+    @landmark.location_longitude  = deletedElements['location']['longitude']
+    @landmark.location_street     = deletedElements['location']['street']
+    @landmark.location_zip        = deletedElements['location']['zip']
+    
     respond_to do |format|
       if @landmark.save
         format.html { redirect_to @landmark, notice: 'Landmark was successfully fetched.' }
