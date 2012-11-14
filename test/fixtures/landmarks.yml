@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  is_published: 
+  is_published: false
   website: MyString
   username: MyString
   description: MyText
@@ -26,7 +26,7 @@ one:
 
 two:
   name: MyString
-  is_published: 
+  is_published: false
   website: MyString
   username: MyString
   description: MyText

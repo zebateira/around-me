@@ -2,7 +2,7 @@ class CreateLandmarks < ActiveRecord::Migration
   def change
     create_table :landmarks do |t|
       t.string :name
-      t.bool :is_published
+      t.boolean :is_published
       t.string :website
       t.string :username
       t.text :description
