@@ -57,6 +57,27 @@ class LandmarksController < ApplicationController
     @response = JSON.parse response.body
     
     @landmark.name = @response['name']
+    @landmark.about = @response['about']
+    @landmark.category = @response['category']
+    @landmark.checkins = @response['checkins']
+    @landmark.description = @response['description']
+    @landmark.general_info = @response['general_info']
+    @landmark.id = @response['id']
+    @landmark.is_published = @response['is_published']
+    @landmark.likes = @response['likes']
+    @landmark.link = @response['link']
+    @landmark.location_city = @response['location']['city']
+    @landmark.location_country = @response['location']['country']
+    @landmark.location_latitude = @response['location']['latitude']
+    @landmark.location_longitude = @response['location']['longitude']
+    @landmark.location_street = @response['location']['street']
+    @landmark.location_zip = @response['location']['zip']
+    @landmark.phone = @response['phone']
+    @landmark.public_transit = @response['public_transit']
+    @landmark.talking_about_count = @response['talking_about_count']
+    @landmark.website = @response['website']
+    @landmark.were_here_count = @response['were_here_count']
+
 
     respond_to do |format|
       if @landmark.save
