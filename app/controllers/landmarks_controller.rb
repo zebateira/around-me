@@ -8,9 +8,11 @@ class LandmarksController < ApplicationController
   def index
     @landmarks = Landmark.all
     
+    landmarks = @landmarks.to_json(:only => [ :id, :username, :name ])
+    
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @landmarks }
+      format.json { render json: landmarks }
     end
   end
 
