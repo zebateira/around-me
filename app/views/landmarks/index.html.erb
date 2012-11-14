@@ -3,56 +3,13 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Is published</th>
-    <th>Website</th>
-    <th>Username</th>
-    <th>Description</th>
-    <th>About</th>
-    <th>Location street</th>
-    <th>Location city</th>
-    <th>Location country</th>
-    <th>Location zip</th>
-    <th>Location latitude</th>
-    <th>Location longitude</th>
-    <th>Public transit</th>
-    <th>Phone</th>
-    <th>Checkins</th>
-    <th>Were here count</th>
-    <th>Talking about count</th>
-    <th>Category</th>
-    <th>General info</th>
-    <th>Id</th>
-    <th>Link</th>
-    <th>Likes</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>FB Username</th>
   </tr>
 
 <% @landmarks.each do |landmark| %>
   <tr>
     <td><%= landmark.name %></td>
-    <td><%= landmark.is_published %></td>
-    <td><%= landmark.website %></td>
     <td><%= landmark.username %></td>
-    <td><%= landmark.description %></td>
-    <td><%= landmark.about %></td>
-    <td><%= landmark.location_street %></td>
-    <td><%= landmark.location_city %></td>
-    <td><%= landmark.location_country %></td>
-    <td><%= landmark.location_zip %></td>
-    <td><%= landmark.location_latitude %></td>
-    <td><%= landmark.location_longitude %></td>
-    <td><%= landmark.public_transit %></td>
-    <td><%= landmark.phone %></td>
-    <td><%= landmark.checkins %></td>
-    <td><%= landmark.were_here_count %></td>
-    <td><%= landmark.talking_about_count %></td>
-    <td><%= landmark.category %></td>
-    <td><%= landmark.general_info %></td>
-    <td><%= landmark.id %></td>
-    <td><%= landmark.link %></td>
-    <td><%= landmark.likes %></td>
     <td><%= link_to 'Show', landmark %></td>
     <td><%= link_to 'Edit', edit_landmark_path(landmark) %></td>
     <td><%= link_to 'Destroy', landmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
