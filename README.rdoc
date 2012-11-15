@@ -1,11 +1,13 @@
-== AroundMe Server
+= AroundMe Server
 
-Get all Landmarks:
+==Get all Landmarks:
 
-/landmarks.json
-/landmarks.xml
+- /landmarks.json
 
-Get Landmark with id:
+- /landmarks.xml
 
-/landmarks/<id>.json
-/landmarks/<id>.xml
+==Get Landmark with id:
+
+- /landmarks/<id>.json
+
+- /landmarks/<id>.xml
