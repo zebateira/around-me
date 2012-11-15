@@ -1,13 +1,15 @@
-= AroundMe Server
+=AroundMe Server
+
+host: http://around-me.heroku.com
 
 ==Get all Landmarks:
 
-- /landmarks.json
+- http://around-me.heroku.com/landmarks.json
 
-- /landmarks.xml
+- http://around-me.heroku.com/landmarks.xml
 
 ==Get Landmark with id:
 
-- /landmarks/<id>.json
+- http://around-me.heroku.com/landmarks/<id>.json
 
-- /landmarks/<id>.xml
+- http://around-me.heroku.com/landmarks/<id>.xml
