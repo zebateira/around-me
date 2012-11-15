@@ -1,16 +1,19 @@
 class FbConnectionsController < ApplicationController
   
-  def fetchLandmark
-    @landmark = Landmark.new(params[:landmark])
-
-    uri = URI.parse(FB_API + '/' + @landmark.username)
+  def http_request(url)
+    uri = URI.parse(url)
 
     response = Net::HTTP.get_response(uri)
     http = Net::HTTP.new(uri.host, uri.port)
     
-    response = http.request(Net::HTTP::Get.new(uri.request_uri))
-    @response = JSON.parse( response.body )
+    http.request(Net::HTTP::Get.new(uri.request_uri))
+  end
+  
+  def fetchLandmark
+    @landmark = Landmark.new(params[:landmark])
     
+    @response = JSON.parse http_request(FB_GRAPH_API + '/' + @landmark.username).body
+
     deletedElements = {}
     @response.each { |key, value| 
       if LANDMARKS_DEPTH1_ELEMS.include?(key)

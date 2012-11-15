@@ -9,8 +9,8 @@ class LandmarksController < ApplicationController
   def index
     @landmarks = Landmark.all
     
-    landmarks_json = @landmarks.to_json(:only => [ :id, :username, :name ])
-    landmarks_xml = @landmarks.to_xml(:root => 'landmarks', :only => [ :id, :username, :name ])
+    landmarks_json = @landmarks.to_json(:only => LANDMARK_INDEX_FIELDS)
+    landmarks_xml = @landmarks.to_xml(:root => 'landmarks', :only => LANDMARK_INDEX_FIELDS)
     
     respond_to do |format|
       format.html # index.html.erb
