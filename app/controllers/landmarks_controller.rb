@@ -5,36 +5,43 @@ require 'uri'
 class LandmarksController < ApplicationController
   # GET /landmarks
   # GET /landmarks.json
+  # GET /landmarks.xml
   def index
     @landmarks = Landmark.all
     
-    landmarks = @landmarks.to_json(:only => [ :id, :username, :name ])
+    landmarks_json = @landmarks.to_json(:only => [ :id, :username, :name ])
+    landmarks_xml = @landmarks.to_xml(:root => 'landmarks', :only => [ :id, :username, :name ])
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: landmarks }
+      format.json { render json: landmarks_json}
+      format.xml { render xml: landmarks_xml }
     end
   end
 
   # GET /landmarks/1
   # GET /landmarks/1.json
+  # GET /landmarks/1.xml
   def show
     @landmark = Landmark.find(params[:id])
     
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @landmark }
+      format.xml { render xml: @landmark }
     end
   end
 
   # GET /landmarks/new
   # GET /landmarks/new.json
+  # GET /landmarks/new.xml
   def new
     @landmark = Landmark.new
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @landmark }
+      format.xml { render xml: @landmark }
     end
   end
 
@@ -48,7 +55,7 @@ class LandmarksController < ApplicationController
   def create
     @landmark = Landmark.new(params[:landmark])
     
-    uri = URI.parse(FB_API + @landmark.username) # TODO: refactor
+    uri = URI.parse(FB_API + '/' + @landmark.username)
 
     response = Net::HTTP.get_response(uri)
     http = Net::HTTP.new(uri.host, uri.port)

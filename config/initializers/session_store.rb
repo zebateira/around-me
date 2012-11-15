@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-AroundMe::Application.config.session_store :cookie_store, key: '_AroundMe_session'
+AroundMe::Application.config.session_store :cookie_store, key: '_around_me_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
