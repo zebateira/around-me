@@ -1,0 +1,81 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br />
+    <%= f.text_field :end_time %>
+  </div>
+  <div class="field">
+    <%= f.label :is_date_only %><br />
+    <%= f.check_box :is_date_only %>
+  </div>
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_name %><br />
+    <%= f.text_field :owner_name %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_category %><br />
+    <%= f.text_field :owner_category %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_id %><br />
+    <%= f.text_field :owner_id %>
+  </div>
+  <div class="field">
+    <%= f.label :privacy %><br />
+    <%= f.text_field :privacy %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.text_field :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :timezone %><br />
+    <%= f.text_field :timezone %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_time %><br />
+    <%= f.text_field :updated_time %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_id %><br />
+    <%= f.text_field :venue_id %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_latitude %><br />
+    <%= f.text_field :venue_latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_longitude %><br />
+    <%= f.text_field :venue_longitude %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

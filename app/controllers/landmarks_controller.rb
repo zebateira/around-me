@@ -53,40 +53,7 @@ class LandmarksController < ApplicationController
   # POST /landmarks
   # POST /landmarks.json
   def create
-    @landmark = Landmark.new(params[:landmark])
-    
-    uri = URI.parse(FB_API + '/' + @landmark.username)
-
-    response = Net::HTTP.get_response(uri)
-    http = Net::HTTP.new(uri.host, uri.port)
-    
-    response = http.request(Net::HTTP::Get.new(uri.request_uri))
-    @response = JSON.parse( response.body )
-    
-    deletedElements = {}
-    @response.each { |key, value| 
-      if LANDMARKS_DEPTH1_ELEMS.include?(key)
-        deletedElements[key] = @response.delete(key)
-      end
-    }
-
-    @landmark                     = Landmark.create @response
-    @landmark.location_city       = deletedElements['location']['city']
-    @landmark.location_country    = deletedElements['location']['country']
-    @landmark.location_latitude   = deletedElements['location']['latitude']
-    @landmark.location_longitude  = deletedElements['location']['longitude']
-    @landmark.location_street     = deletedElements['location']['street']
-    @landmark.location_zip        = deletedElements['location']['zip']
-    
-    respond_to do |format|
-      if @landmark.save
-        format.html { redirect_to @landmark, notice: 'Landmark was successfully fetched.' }
-        format.json { render json: @landmark, status: :created, location: @landmark }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @landmark.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to :controller => 'fb_connections', :action => 'fetchLandmark', :landmark => params[:landmark]
   end
 
   # PUT /landmarks/1

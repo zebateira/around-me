@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyText
+  end_time: MyString
+  is_date_only: false
+  id: MyString
+  location: MyString
+  name: MyString
+  owner_name: MyString
+  owner_category: MyString
+  owner_id: MyString
+  privacy: MyString
+  start_time: MyString
+  timezone: MyString
+  updated_time: MyString
+  venue_id: MyString
+  venue_latitude: 1.5
+  venue_longitude: 1.5
+
+two:
+  description: MyText
+  end_time: MyString
+  is_date_only: false
+  id: MyString
+  location: MyString
+  name: MyString
+  owner_name: MyString
+  owner_category: MyString
+  owner_id: MyString
+  privacy: MyString
+  start_time: MyString
+  timezone: MyString
+  updated_time: MyString
+  venue_id: MyString
+  venue_latitude: 1.5
+  venue_longitude: 1.5

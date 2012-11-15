@@ -1,0 +1,21 @@
+<h1>Listing fb_connections</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @fb_connections.each do |fb_connection| %>
+  <tr>
+    <td><%= link_to 'Show', fb_connection %></td>
+    <td><%= link_to 'Edit', edit_fb_connection_path(fb_connection) %></td>
+    <td><%= link_to 'Destroy', fb_connection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Fb connection', new_fb_connection_path %>

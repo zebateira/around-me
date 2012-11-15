@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114102416) do
+ActiveRecord::Schema.define(:version => 20121115142659) do
+
+  create_table "events", :force => true do |t|
+    t.text     "description"
+    t.string   "end_time"
+    t.boolean  "is_date_only"
+    t.string   "location"
+    t.string   "name"
+    t.string   "owner_name"
+    t.string   "owner_category"
+    t.string   "owner_id"
+    t.string   "privacy"
+    t.string   "start_time"
+    t.string   "timezone"
+    t.string   "updated_time"
+    t.string   "venue_id"
+    t.float    "venue_latitude"
+    t.float    "venue_longitude"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "landmarks", :force => true do |t|
     t.string   "name"

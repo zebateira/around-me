@@ -1,5 +1,10 @@
 AroundMe::Application.routes.draw do
+  # events and landmarks
+  resources :events
   resources :landmarks
+  
+  #fb connections
+  match 'fb_connections' => 'fb_connections#fetchLandmark'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
