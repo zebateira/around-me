@@ -43,3 +43,5 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'koala'
+
+gem 'thin'
