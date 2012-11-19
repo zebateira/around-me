@@ -1,6 +1,4 @@
-require 'json' 
-require 'net/http'
-require 'uri'
+require 'json'
 
 class LandmarksController < ApplicationController
   # GET /landmarks
@@ -53,7 +51,7 @@ class LandmarksController < ApplicationController
   # POST /landmarks
   # POST /landmarks.json
   def create
-    redirect_to :controller => 'fb_connections', :action => 'fetchLandmark', :landmark => params[:landmark]
+    redirect_to :controller => 'fb_connections', :action => 'fetch_landmark', :landmark => params[:landmark]
   end
 
   # PUT /landmarks/1

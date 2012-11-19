@@ -5,6 +5,14 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
 
+    @oauth = Koala::Facebook::OAuth.new(APP_ID, APP_SECRET, 'http://localhost:3000/')
+    puts 'access_token = ' + @oauth.get_app_access_token
+    @graph = Koala::Facebook::API.new(@oauth.get_app_access_token)
+    
+    puts @events = @graph.get_connections("casadamusica", "events")
+    
+    # @events = response
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
