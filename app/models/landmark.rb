@@ -5,8 +5,7 @@ class Landmark < ActiveRecord::Base
                   :location_latitude, :location_longitude, 
                   :location_street, :location_zip, :name, 
                   :phone, :public_transit, :talking_about_count, 
-                  :username, :website, :were_here_count,
-                  :landmark_id
+                  :username, :website, :were_here_count
   
   has_many :events, :dependent => :destroy
 end

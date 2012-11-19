@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115142659) do
+ActiveRecord::Schema.define(:version => 20121115150244) do
 
   create_table "events", :force => true do |t|
     t.text     "description"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20121115142659) do
     t.string   "venue_id"
     t.float    "venue_latitude"
     t.float    "venue_longitude"
+    t.string   "landmark_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

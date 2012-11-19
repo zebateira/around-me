@@ -40,7 +40,6 @@ class FbConnectionsController < ApplicationController
     }
 
     @landmark                     = Landmark.create response
-    @landmark.landmark_id         = @landmark.id
     @landmark.location_city       = deletedElements['location']['city']
     @landmark.location_country    = deletedElements['location']['country']
     @landmark.location_latitude   = deletedElements['location']['latitude']
@@ -61,13 +60,15 @@ class FbConnectionsController < ApplicationController
     end
   end
   
-  def fetch_events
+  def fetch_events # TODO owner and venue
     @oauth = Koala::Facebook::OAuth.new(APP_ID, APP_SECRET, CALLBACK_URL)
     @graph = Koala::Facebook::API.new(@oauth.get_app_access_token)
     
-    response = @graph.get_connections(@landmark.username, 'events')
+    response = @graph.get_connections(@landmark.username, 'events').raw_response['data']
     
-    response.each { |event| @landmark.events.create(event) }
+    response.each { |event|
+      @landmark.events.create event
+    }
   end
   
   

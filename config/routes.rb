@@ -1,6 +1,7 @@
 AroundMe::Application.routes.draw do
   # events and landmarks
   resources :landmarks
+  match 'landmarks/:id/events(.:format)' => 'landmarks#events'
   
   #fb connections
   match 'fb_connections/fetch_landmark'

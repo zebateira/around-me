@@ -81,4 +81,17 @@ class LandmarksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # GET /landmarks/1/events
+  # GET /landmarks/1/events.json
+  # GET /landmarks/1/events.xml
+  def events
+    @landmark = Landmark.find(params[:id])
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @landmark.events}
+      format.xml { render xml: @landmark.events }
+    end
+  end
 end
