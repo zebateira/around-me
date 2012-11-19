@@ -2,7 +2,7 @@ APP_ID = '360645504021378'
 APP_SECRET = 'ae46706edcaef26358b5c4459b8ec91a'
 
 # OAUTH
-CALLBACK_URL = 'http://localhost:3000/'
+CALLBACK_URL = 'http://around-me.herokuapp.com/'
 
 # API Calls
 FB_GRAPH_API = 'http://graph.facebook.com'
