@@ -1,4 +1,4 @@
-class CreateEvents < ActiveRecord::Migration
+class CreateEvents2 < ActiveRecord::Migration
   def change
     create_table :events do |t|
       t.string :id
