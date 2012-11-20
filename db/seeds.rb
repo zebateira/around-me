@@ -6,10 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-['casadamusica', 'ColiseuPorto', 'fundacaoserralves'].each { |landmark|
+['casadamusica', 'ColiseuPorto', 'fundacaoserralves'].each { |landmark_username|
     
-  response = Landmark.http_request(FB_GRAPH_API + '/' + landmark.username)
-  response = Landmark.http_request(Landmark.generate_request landmark.username, LANDMARK_FIELDS)
+  url = FB_GRAPH_API + '/' + landmark_username
+  
+  uri = URI.parse(url)
+  response = Net::HTTP.get_response(uri) # ?
+  http = Net::HTTP.new(uri.host, uri.port)
+  response = JSON.parse http.request(Net::HTTP::Get.new(uri.request_uri)).body
   
   deletedElements = {} # TODO remove null fields from response
   response.each { |key, value| 

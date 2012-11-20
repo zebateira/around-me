@@ -29,7 +29,7 @@ class FbConnectionsController < ApplicationController
   def fetch_landmark
     @landmark = Landmark.new(params[:landmark])
     
-    response = http_request(FB_GRAPH_API + '/' + @landmark.username)
+    #response = http_request(FB_GRAPH_API + '/' + @landmark.username)
     response = http_request(generate_request @landmark.username, LANDMARK_FIELDS)
 
     deletedElements = {} # TODO remove null fields from response
