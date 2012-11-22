@@ -72,11 +72,8 @@ class FbConnectionsController < ApplicationController
   end
   
   
-  
-  
-  
-  
-  
+
+
   ##### Rails gen stuff
 
   # GET /fb_connections/1

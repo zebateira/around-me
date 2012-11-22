@@ -30,6 +30,16 @@
   landmark.location_street     = deletedElements['location']['street']
   landmark.location_zip        = deletedElements['location']['zip']
   
+  
+  oauth = Koala::Facebook::OAuth.new(APP_ID, APP_SECRET, CALLBACK_URL)
+  graph = Koala::Facebook::API.new(oauth.get_app_access_token)
+  
+  response = graph.get_connections(landmark.username, 'events').raw_response['data']
+  
+  response.each { |event|
+    landmark.events.create event
+  }
+  
 }
 
 
