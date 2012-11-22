@@ -8,17 +8,17 @@ host: http://around-me.heroku.com
 
 - http://around-me.heroku.com/landmarks.xml
 
-==Get Landmark with username:
+==Get Landmark with username example:
 
-- http://around-me.heroku.com/landmarks/username.json
+- http://around-me.heroku.com/landmarks/casadamusica.json
 
-- http://around-me.heroku.com/landmarks/username.xml
+- http://around-me.heroku.com/landmarks/casadamusica.xml
 
-==Get All Landmark's Events with username:
+==Get All Landmark's Events with username example:
 
-- http://around-me.heroku.com/landmarks/username/events.json
+- http://around-me.heroku.com/landmarks/casadamusica/events.json
 
-- http://around-me.heroku.com/landmarks/username/events.xml
+- http://around-me.heroku.com/landmarks/casadamusica/events.xml
 
 ==Add Landmark:
 
@@ -30,5 +30,7 @@ IMPORTANT: always use username.toLowerCase on url's
 
 EXAMPLE:
 Landmark Name: Coliseu do Porto
+
 FB username:   ColiseuPorto
+
 request:       http://around-me.herokuapp.com/landmarks/coliseuporto.json
