@@ -15,4 +15,4 @@ LANDMARK_FIELDS = ['id', 'about', 'affiliation', 'category', 'checkins', 'descri
 ### LANDMARKS
 
 # GET LANDMARK INDEX FIELDS
-LANDMARK_INDEX_FIELDS = [ :id, :username, :name ]
+LANDMARK_INDEX_FIELDS = [:username, :name ]

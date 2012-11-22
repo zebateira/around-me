@@ -1,7 +1,6 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.string :id
       t.text :description
       t.string :end_time
       t.boolean :is_date_only
@@ -14,7 +13,6 @@ class CreateEvents < ActiveRecord::Migration
       t.string :start_time
       t.string :timezone
       t.string :updated_time
-      t.string :landmark_id
 
       t.timestamps
     end

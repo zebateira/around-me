@@ -14,29 +14,25 @@
 ActiveRecord::Schema.define(:version => 20121122044233) do
 
   create_table "events", :force => true do |t|
-    t.string   "fb_id"
     t.text     "description"
     t.string   "end_time"
     t.boolean  "is_date_only"
     t.string   "location"
     t.string   "name"
+    t.string   "owner_id"
     t.string   "owner_name"
     t.string   "owner_category"
-    t.string   "owner_id"
     t.string   "privacy"
     t.string   "start_time"
     t.string   "timezone"
     t.string   "updated_time"
-    t.string   "venue_id"
-    t.float    "venue_latitude"
-    t.float    "venue_longitude"
-    t.string   "landmark_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "fb_id"
+    t.integer  "landmark_id"
   end
 
   create_table "landmarks", :force => true do |t|
-    t.string   "fb_id"
     t.string   "name"
     t.boolean  "is_published"
     t.string   "website"
@@ -60,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20121122044233) do
     t.integer  "likes"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "fb_id"
     t.string   "slug"
   end
 

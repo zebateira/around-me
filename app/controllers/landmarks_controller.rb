@@ -89,7 +89,6 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find(params[:id])
     
     respond_to do |format|
-      format.html # index.html.erb
       format.json { render json: @landmark.events}
       format.xml { render xml: @landmark.events }
     end

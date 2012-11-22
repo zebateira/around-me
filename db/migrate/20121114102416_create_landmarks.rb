@@ -20,7 +20,6 @@ class CreateLandmarks < ActiveRecord::Migration
       t.integer :talking_about_count
       t.string :category
       t.text :general_info
-      t.string :id
       t.string :link
       t.integer :likes
 
