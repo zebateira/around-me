@@ -35,4 +35,4 @@ Landmark Name: Coliseu do Porto
 
 FB username:   ColiseuPorto
 
-request:       http://around-me.herokuapp.com/landmarks/coliseuporto.json
+request:       http://around-me.heroku.com/landmarks/coliseuporto.json
