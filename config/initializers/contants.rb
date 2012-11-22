@@ -8,13 +8,9 @@ CALLBACK_URL = 'http://around-me.herokuapp.com/'
 FB_GRAPH_API = 'http://graph.facebook.com'
 FB_GRAPH_API_HTTPS = 'https://graph.facebook.com'
 
-EVENT_FIELDS = ['description', 'end_time', 'is_date_only', 'location', 'name', 'owner', 'privacy', 'start_time', 'timezone', 'updated_time', 'venue', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count']
-EVENT_FIELDS2 = ['id', 'description', 'end_time', 'is_date_only', 'location', 'name', 'privacy', 'start_time', 'timezone', 'updated_time', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count']
-EVENT_DEPTH1_FIELDS = ['id', 'owner', 'venue', 'attire', 'payment_options', 'general_manager', 'restaurant_services', 'restaurant_specialties']
+EVENT_FIELDS = ['id', 'description', 'end_time', 'is_date_only', 'location', 'name', 'owner', 'privacy', 'start_time', 'timezone', 'updated_time', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count'] #, 'venue']
 
-LANDMARK_FIELDS = ['about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count']
-LANDMARK_FIELDS2 = ['id', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count']
-LANDMARK_DEPTH1_FIELDS = ['location', 'parking', 'hours', 'cover', 'id']
+LANDMARK_FIELDS = ['id', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count']
 
 ### LANDMARKS
 

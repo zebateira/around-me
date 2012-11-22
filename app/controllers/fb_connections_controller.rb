@@ -34,18 +34,19 @@ class FbConnectionsController < ApplicationController
 
     newElements = {} # TODO remove null fields from response
     response.each { |key, value| 
-      if LANDMARK_FIELDS2.include?(key)
-        newElements[key == 'id' ? 'fb_id' : key] = value
+      if LANDMARK_FIELDS.include?(key)
+        if value.is_a?(Hash)
+          field = key
+          value.each { |key, value|
+            newElements[field + '_' + key] = value
+          }
+        else
+          newElements[key == 'id' ? 'fb_id' : key] = value
+        end
       end
     }
 
-    @landmark                     = Landmark.create newElements
-    @landmark.location_city       = response['location']['city']
-    @landmark.location_country    = response['location']['country']
-    @landmark.location_latitude   = response['location']['latitude']
-    @landmark.location_longitude  = response['location']['longitude']
-    @landmark.location_street     = response['location']['street']
-    @landmark.location_zip        = response['location']['zip']
+    @landmark = Landmark.create newElements
     
     fetch_events
     
@@ -74,18 +75,19 @@ class FbConnectionsController < ApplicationController
       
       koala_event = @graph.get_object(event_id)
       koala_event.each { |key, value|
-        if EVENT_FIELDS2.include?(key)
-          newElements[key == 'id' ? 'fb_id' : key] = value
+        if EVENT_FIELDS.include?(key)
+          if value.is_a?(Hash)
+            field = key
+            value.each { |key, value|
+              newElements[field + '_' + key] = value
+            }
+          else
+            newElements[key == 'id' ? 'fb_id' : key] = value
+          end
         end
       }
     
-      event = @landmark.events.create newElements
-      event.venue_id = koala_event['venue']['id']
-      event.venue_latitude = koala_event['venue']['latitude']
-      event.venue_longitude = koala_event['venue']['longitude']
-      event.owner_id = koala_event['owner']['id']
-      event.owner_category = koala_event['owner']['category']
-      event.owner_name = koala_event['owner']['name']
+      @landmark.events.create newElements
   }
   end
   
