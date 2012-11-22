@@ -45,3 +45,5 @@ gem 'jquery-rails'
 gem 'koala'
 
 gem 'thin'
+
+gem 'friendly_id', '~> 4.0.1'

@@ -16,14 +16,15 @@
   response = JSON.parse http.request(Net::HTTP::Get.new(uri.request_uri)).body
   
   newElements = {} # TODO remove null fields from response
-  response.each { |key1, value1| 
-    if LANDMARK_FIELDS.include?(key1)
-      if value1.is_a?(Hash)
-        value1.each { |key2, value2|
-          newElements[key1 + '_' + key2] = value2
+  response.each { |key, value| 
+    if LANDMARK_FIELDS.include?(key)
+      if value.is_a?(Hash)
+        field = key
+        value.each { |key, value|
+          newElements[field + '_' + key] = value
         }
       else
-        newElements[key1 == 'id' ? 'fb_id' : key1] = value1
+        newElements[key == 'id' ? 'fb_id' : key] = value
       end
     end
   }
@@ -44,14 +45,15 @@
     newElements = {}
     
     koala_event = graph.get_object(event_id)
-    koala_event.each { |key1, value1|
-      if EVENT_FIELDS.include?(key1)
-        if value1.is_a?(Hash)
-          value1.each { |key2, value2|
-            newElements[key1 + '_' + key2] = value2
+    koala_event.each { |key, value|
+      if EVENT_FIELDS.include?(key)
+        if value.is_a?(Hash)
+          field = key
+          value.each { |key, value|
+            newElements[field + '_' + key] = value
           }
         else
-          newElements[key1 == 'id' ? 'fb_id' : key1] = value1
+          newElements[key == 'id' ? 'fb_id' : key] = value
         end
       end
     }

@@ -8,7 +8,7 @@ CALLBACK_URL = 'http://around-me.herokuapp.com/'
 FB_GRAPH_API = 'http://graph.facebook.com'
 FB_GRAPH_API_HTTPS = 'https://graph.facebook.com'
 
-EVENT_FIELDS = ['id', 'description', 'end_time', 'is_date_only', 'location', 'name', 'owner', 'privacy', 'start_time', 'timezone', 'updated_time', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count'] #, 'venue']
+EVENT_FIELDS = ['id', 'description', 'end_time', 'is_date_only', 'name', 'owner', 'privacy', 'start_time', 'timezone', 'updated_time', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count'] #, 'venue']
 
 LANDMARK_FIELDS = ['id', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count']
 
