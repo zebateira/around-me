@@ -10,20 +10,25 @@ host: http://around-me.heroku.com
 
 ==Get Landmark with username:
 
-- http://around-me.heroku.com/landmarks/<username>.json
+- http://around-me.heroku.com/landmarks/username.json
 
-- http://around-me.heroku.com/landmarks/<username>.xml
+- http://around-me.heroku.com/landmarks/username.xml
 
 ==Get All Landmark's Events with username:
 
-- http://around-me.heroku.com/landmarks/<username>/events.json
+- http://around-me.heroku.com/landmarks/username/events.json
 
-- http://around-me.heroku.com/landmarks/<username>/events.xml
+- http://around-me.heroku.com/landmarks/username/events.xml
 
 ==Add Landmark:
 
 - http://around-me.heroku.com/landmarks/new
-- enter username
+- enter username (= fb username, meaning, with CamelCase)
 - done!
 
-IMPORTANT: <username> => username.toLowerCase
+IMPORTANT: always use username.toLowerCase on url's
+
+EXAMPLE:
+Landmark Name: Coliseu do Porto
+FB username:   ColiseuPorto
+request:       http://around-me.herokuapp.com/landmarks/coliseuporto.json
