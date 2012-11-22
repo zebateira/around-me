@@ -26,9 +26,11 @@ host: http://around-me.heroku.com
 - enter username (= fb username, meaning, with CamelCase)
 - done!
 
-IMPORTANT: always use username.toLowerCase on url's
+===IMPORTANT
+Always use username.toLowerCase on url's
 
-EXAMPLE:
+===EXAMPLE:
+
 Landmark Name: Coliseu do Porto
 
 FB username:   ColiseuPorto
