@@ -6,6 +6,7 @@ class Landmark < ActiveRecord::Base
                   :location_street, :location_zip, :name, 
                   :phone, :public_transit, :talking_about_count, 
                   :username, :website, :were_here_count
-  
+  extend FriendlyId
+  friendly_id :username, use: :slugged  
   has_many :events, :dependent => :destroy
 end

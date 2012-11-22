@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122010157) do
+ActiveRecord::Schema.define(:version => 20121122044233) do
 
   create_table "events", :force => true do |t|
     t.string   "fb_id"
@@ -60,6 +60,9 @@ ActiveRecord::Schema.define(:version => 20121122010157) do
     t.integer  "likes"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "slug"
   end
+
+  add_index "landmarks", ["slug"], :name => "index_landmarks_on_slug", :unique => true
 
 end
