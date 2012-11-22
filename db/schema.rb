@@ -11,9 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115150244) do
+ActiveRecord::Schema.define(:version => 20121122010157) do
 
   create_table "events", :force => true do |t|
+    t.string   "fb_id"
     t.text     "description"
     t.string   "end_time"
     t.boolean  "is_date_only"
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20121115150244) do
   end
 
   create_table "landmarks", :force => true do |t|
+    t.string   "fb_id"
     t.string   "name"
     t.boolean  "is_published"
     t.string   "website"
