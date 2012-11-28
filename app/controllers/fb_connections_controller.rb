@@ -29,7 +29,6 @@ class FbConnectionsController < ApplicationController
   def fetch_landmark
     @landmark = Landmark.new(params[:landmark])
     
-    #response = http_request(FB_GRAPH_API + '/' + @landmark.username)
     response = http_request(generate_request @landmark.username, LANDMARK_FIELDS)
 
     newElements = {} # TODO remove null fields from response
@@ -38,7 +37,9 @@ class FbConnectionsController < ApplicationController
         if value.is_a?(Hash)
           field = key
           value.each { |key, value|
-            newElements[field + '_' + key] = value
+			if LANDMARK_FIELDS_DEPTH1.include?(key)			
+	            newElements[field + '_' + key] = value
+			end
           }
         else
           newElements[key == 'id' ? 'fb_id' : key] = value
@@ -79,7 +80,9 @@ class FbConnectionsController < ApplicationController
           if value.is_a?(Hash)
             field = key
             value.each { |key, value|
-              newElements[field + '_' + key] = value
+			if EVENT_FIELDS_DEPTH1.include?(key)			
+	            newElements[field + '_' + key] = value
+			end
             }
           else
             newElements[key == 'id' ? 'fb_id' : key] = value
@@ -91,79 +94,4 @@ class FbConnectionsController < ApplicationController
   }
   end
   
-  
-
-
-  ##### Rails gen stuff
-
-  # GET /fb_connections/1
-  # GET /fb_connections/1.json
-  def show
-    @fb_connection = FbConnection.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @fb_connection }
-    end
-  end
-
-  # GET /fb_connections/new
-  # GET /fb_connections/new.json
-  def new
-    @fb_connection = FbConnection.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @fb_connection }
-    end
-  end
-
-  # GET /fb_connections/1/edit
-  def edit
-    @fb_connection = FbConnection.find(params[:id])
-  end
-
-  # POST /fb_connections
-  # POST /fb_connections.json
-  def create
-    @fb_connection = FbConnection.new(params[:fb_connection])
-
-    respond_to do |format|
-      if @fb_connection.save
-        format.html { redirect_to @fb_connection, notice: 'Fb connection was successfully created.' }
-        format.json { render json: @fb_connection, status: :created, location: @fb_connection }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @fb_connection.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /fb_connections/1
-  # PUT /fb_connections/1.json
-  def update
-    @fb_connection = FbConnection.find(params[:id])
-
-    respond_to do |format|
-      if @fb_connection.update_attributes(params[:fb_connection])
-        format.html { redirect_to @fb_connection, notice: 'Fb connection was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @fb_connection.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /fb_connections/1
-  # DELETE /fb_connections/1.json
-  def destroy
-    @fb_connection = FbConnection.find(params[:id])
-    @fb_connection.destroy
-
-    respond_to do |format|
-      format.html { redirect_to fb_connections_url }
-      format.json { head :no_content }
-    end
-  end
 end

@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 ['casadamusica', 'ColiseuPorto', 'fundacaoserralves', 'ClubRivoliPorto', 'contagiarte', 'HardClubPorto'].each { |landmark_username|
     
   url = FB_GRAPH_API + '/' + landmark_username
@@ -21,7 +13,9 @@
       if value.is_a?(Hash)
         field = key
         value.each { |key, value|
-          newElements[field + '_' + key] = value
+			if LANDMARK_FIELDS_DEPTH1.include?(key)			
+	            newElements[field + '_' + key] = value
+			end
         }
       else
         newElements[key == 'id' ? 'fb_id' : key] = value
@@ -50,7 +44,9 @@
         if value.is_a?(Hash)
           field = key
           value.each { |key, value|
-            newElements[field + '_' + key] = value
+			if EVENT_FIELDS_DEPTH1.include?(key)			
+	            newElements[field + '_' + key] = value
+			end
           }
         else
           newElements[key == 'id' ? 'fb_id' : key] = value
