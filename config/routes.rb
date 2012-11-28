@@ -5,6 +5,7 @@ AroundMe::Application.routes.draw do
   
   #fb connections
   match 'fb_connections/fetch_landmark'
+  root :to => 'landmarks#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
