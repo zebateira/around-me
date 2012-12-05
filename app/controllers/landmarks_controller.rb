@@ -7,13 +7,10 @@ class LandmarksController < ApplicationController
   def index
     @landmarks = Landmark.all
     
-    landmarks_json = @landmarks.to_json(:only => LANDMARK_INDEX_FIELDS)
-    landmarks_xml = @landmarks.to_xml(:root => 'landmarks', :only => LANDMARK_INDEX_FIELDS)
-    
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: landmarks_json}
-      format.xml { render xml: landmarks_xml }
+      format.json { render json: @landmarks.to_json(:only => LANDMARK_INDEX_FIELDS) }
+      format.xml { render xml: @landmarks.to_xml(:root => 'landmarks', :only => LANDMARK_INDEX_FIELDS) }
     end
   end
 
@@ -81,16 +78,17 @@ class LandmarksController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   # GET /landmarks/1/events
   # GET /landmarks/1/events.json
   # GET /landmarks/1/events.xml
   def events
     @landmark = Landmark.find(params[:id])
-    
+
     respond_to do |format|
-      format.json { render json: @landmark.events}
-      format.xml { render xml: @landmark.events }
+      format.json { render json: @landmark.events.to_json(:only => EVENT_INDEX_FIELDS) }
+      format.xml { render xml: @landmark.events.to_xml(:root => 'events', :only => EVENT_INDEX_FIELDS) }
     end
   end
+  
 end

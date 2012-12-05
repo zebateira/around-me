@@ -8,15 +8,20 @@ CALLBACK_URL = 'http://around-me.herokuapp.com/'
 FB_GRAPH_API = 'http://graph.facebook.com'
 FB_GRAPH_API_HTTPS = 'https://graph.facebook.com'
 
-EVENT_FIELDS = ['id', 'description', 'end_time', 'is_date_only', 'name', 'owner', 'privacy', 'start_time', 'timezone', 'updated_time', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count'] #, 'venue']
-
-EVENT_FIELDS_DEPTH1 = ['name', 'category', 'id']
+### LANDMARKS
 
 LANDMARK_FIELDS = ['id', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count']
 
 LANDMARK_FIELDS_DEPTH1 = ['street', 'city', 'country', 'zip', 'latitude', 'longitude']
 
-### LANDMARKS
-
 # GET LANDMARK INDEX FIELDS
 LANDMARK_INDEX_FIELDS = [:username, :name ]
+
+### EVENTS
+
+EVENT_FIELDS = ['id', 'description', 'end_time', 'is_date_only', 'name', 'owner', 'privacy', 'start_time', 'timezone', 'updated_time', 'about', 'affiliation', 'category', 'checkins', 'description', 'general_info', 'is_published', 'likes', 'link', 'location', 'network', 'name', 'phone', 'public_transit', 'starring', 'talking_about_count', 'username', 'website', 'were_here_count'] #, 'venue']
+
+EVENT_FIELDS_DEPTH1 = ['name', 'category', 'id']
+
+# GET EVENT INDEX FIELDS
+EVENT_INDEX_FIELDS = [:name, :id, :fb_id]
