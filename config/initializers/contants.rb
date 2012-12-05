@@ -24,4 +24,4 @@ EVENT_FIELDS = ['id', 'description', 'end_time', 'is_date_only', 'name', 'owner'
 EVENT_FIELDS_DEPTH1 = ['name', 'category', 'id']
 
 # GET EVENT INDEX FIELDS
-EVENT_INDEX_FIELDS = [:name, :id, :fb_id]
+EVENT_INDEX_FIELDS = [:name, :id, :fb_id, :start_time]
