@@ -3,6 +3,8 @@ AroundMe::Application.routes.draw do
   resources :landmarks
   match 'landmarks/:id/events(.:format)' => 'landmarks#events'
   match 'events/:id(.:format)' => 'events#event'
+
+  match 'radius(.:format)' => 'radius#haversine_distance'
   
   #fb connections
   match 'fb_connections/fetch_landmark'
