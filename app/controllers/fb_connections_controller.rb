@@ -35,11 +35,11 @@ class FbConnectionsController < ApplicationController
     response.each { |key, value| 
       if LANDMARK_FIELDS.include?(key)
         if value.is_a?(Hash)
-          field = key
+          field = key + '_'
           value.each { |key, value|
-			if LANDMARK_FIELDS_DEPTH1.include?(key)			
-	            newElements[field + '_' + key] = value
-			end
+						if LANDMARK_FIELDS_DEPTH1.include?(key)
+							newElements[field + (key == 'cover_id' ? 'id' : key)] = value
+						end
           }
         else
           newElements[key == 'id' ? 'fb_id' : key] = value
@@ -48,7 +48,7 @@ class FbConnectionsController < ApplicationController
     }
 
     @landmark = Landmark.create newElements
-    
+
     fetch_events
     
     respond_to do |format|
@@ -67,31 +67,34 @@ class FbConnectionsController < ApplicationController
     @graph = Koala::Facebook::API.new(@oauth.get_app_access_token)
     
     response = @graph.get_connections(@landmark.username, 'events').raw_response['data']
+
+
+    puts 'landmark = ' + @landmark.username + ' created'
     
-    puts 'landmark = ' + @landmark.username
-    
-    response.each { |event_|
-      event_id = event_['id']
-      newElements = {}
-      
-      koala_event = @graph.get_object(event_id)
-      koala_event.each { |key, value|
-        if EVENT_FIELDS.include?(key)
-          if value.is_a?(Hash)
-            field = key
-            value.each { |key, value|
-			if EVENT_FIELDS_DEPTH1.include?(key)			
-	            newElements[field + '_' + key] = value
-			end
-            }
-          else
-            newElements[key == 'id' ? 'fb_id' : key] = value
-          end
-        end
-      }
-    
-      @landmark.events.create newElements
-  }
+		response.each { |event_|
+		  event_id = event_['id']
+		  newElements = {}
+		  
+		  koala_event = @graph.get_object(event_id)
+		  koala_event.each { |key, value|
+		    if EVENT_FIELDS.include?(key)
+		      if value.is_a?(Hash)
+		        field = key + '_'
+		        value.each { |key, value|
+							if EVENT_FIELDS_DEPTH.include?(key)			
+								newElements[field + key] = value
+							end
+		        }
+		      else
+		        newElements[key == 'id' ? 'fb_id' : key] = value
+		      end
+		    end
+		  }
+
+			newElements['picture_url'] = http_request(FB_GRAPH_API + '/' + event_id + '/picture?type=large&redirect=false')['data']['url']
+		  
+		  @landmark.events.create newElements
+		}
   end
   
 end
