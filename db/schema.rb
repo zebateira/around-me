@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20121122044233) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "fb_id"
-    t.integer  "cover_id"
+    t.string  "cover_id"
     t.string   "cover_source"
     t.string   "slug"
   end
