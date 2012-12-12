@@ -13,4 +13,12 @@ class EventsController < ApplicationController
       format.xml { render xml: @event }
     end
   end
+
+  # DELETE /event/destroy/1
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+
+    redirect_to :controller => 'landmarks', :action => 'index'
+  end
 end

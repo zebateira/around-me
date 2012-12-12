@@ -3,6 +3,7 @@ AroundMe::Application.routes.draw do
   resources :landmarks
   match 'landmarks/:id/events(.:format)' => 'landmarks#events'
   match 'events/:id(.:format)' => 'events#event'
+  match 'events/destroy/:id' => 'events#destroy'
 
   match 'radius(.:format)' => 'radius#haversine_distance'
   
