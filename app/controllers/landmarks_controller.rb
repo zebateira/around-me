@@ -9,8 +9,8 @@ class LandmarksController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @landmarks.to_json(:only => LANDMARK_INDEX_FIELDS) }
-      format.xml { render xml: @landmarks.to_xml(:root => 'landmarks', :only => LANDMARK_INDEX_FIELDS) }
+      format.json { render json: @landmarks.to_json(:only => Landmark::LANDMARK_INDEX_FIELDS) }
+      format.xml { render xml: @landmarks.to_xml(:root => 'landmarks', :only => Landmark::LANDMARK_INDEX_FIELDS) }
     end
   end
 
@@ -86,8 +86,8 @@ class LandmarksController < ApplicationController
     @landmark = Landmark.find(params[:id])
 
     respond_to do |format|
-      format.json { render json: @landmark.events.to_json(:only => EVENT_INDEX_FIELDS) }
-      format.xml { render xml: @landmark.events.to_xml(:root => 'events', :only => EVENT_INDEX_FIELDS) }
+      format.json { render json: @landmark.events.to_json(:only => Event::EVENT_INDEX_FIELDS) }
+      format.xml { render xml: @landmark.events.to_xml(:root => 'events', :only => Event::EVENT_INDEX_FIELDS) }
     end
   end
   

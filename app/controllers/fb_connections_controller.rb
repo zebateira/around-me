@@ -7,37 +7,26 @@ class FbConnectionsController < ApplicationController
   def http_request(url)
     uri = URI.parse(url)
 
-    response = Net::HTTP.get_response(uri) # ?
     http = Net::HTTP.new(uri.host, uri.port)
     JSON.parse http.request(Net::HTTP::Get.new(uri.request_uri)).body
   end
   
-  #def https_request(url)
-    #uri = URI.parse(url)
-    
-    #http = Net::HTTP.new(uri.host, uri.port)
-    #http.use_ssl = true
-    #http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    
-    #http.request(Net::HTTP::Get.new(uri.request_uri))
-  #end
-  
   def generate_request(username, fields)
-    FB_GRAPH_API + '/' + username + '?' + fields.join(',')
+    FbConnection::FB_GRAPH_API + '/' + username + '?' + fields.join(',')
   end
 
-  def fetch_landmark
+	def fetch_landmark
     @landmark = Landmark.new(params[:landmark])
     
-    response = http_request(generate_request @landmark.username, LANDMARK_FIELDS)
+    response = http_request(generate_request @landmark.username, Landmark::LANDMARK_FIELDS)
 
-    newElements = {} # TODO remove null fields from response
+    newElements = {}
     response.each { |key, value| 
-      if LANDMARK_FIELDS.include?(key)
+      if Landmark::LANDMARK_FIELDS.include?(key)
         if value.is_a?(Hash)
           field = key + '_'
           value.each { |key, value|
-						if LANDMARK_FIELDS_DEPTH1.include?(key)
+						if Landmark::LANDMARK_FIELDS_DEPTH1.include?(key)
 							newElements[field + (key == 'cover_id' ? 'id' : key)] = value
 						end
           }
@@ -60,10 +49,11 @@ class FbConnectionsController < ApplicationController
         format.json { render json: @landmark.errors, status: :unprocessable_entity }
       end
     end
-  end
+		
+	end
   
-  def fetch_events # TODO owner and venue
-    @oauth = Koala::Facebook::OAuth.new(APP_ID, APP_SECRET, CALLBACK_URL)
+  def fetch_events
+    @oauth = Koala::Facebook::OAuth.new(FbConnection::APP_ID, FbConnection::APP_SECRET, FbConnection::CALLBACK_URL)
     @graph = Koala::Facebook::API.new(@oauth.get_app_access_token)
     
     response = @graph.get_connections(@landmark.username, 'events').raw_response['data']
@@ -77,11 +67,11 @@ class FbConnectionsController < ApplicationController
 		  
 		  koala_event = @graph.get_object(event_id)
 		  koala_event.each { |key, value|
-		    if EVENT_FIELDS.include?(key)
+		    if Event::EVENT_FIELDS.include?(key)
 		      if value.is_a?(Hash)
 		        field = key + '_'
 		        value.each { |key, value|
-							if EVENT_FIELDS_DEPTH.include?(key)			
+							if Event::EVENT_FIELDS_DEPTH.include?(key)			
 								newElements[field + key] = value
 							end
 		        }
@@ -91,7 +81,7 @@ class FbConnectionsController < ApplicationController
 		    end
 		  }
 
-			newElements['picture_url'] = http_request(FB_GRAPH_API + '/' + event_id + '/picture?type=large&redirect=false')['data']['url']
+			newElements['picture_url'] = http_request(FbConnection::FB_GRAPH_API + '/' + event_id + '/picture?type=large&redirect=false')['data']['url']
 		  
 		  @landmark.events.create newElements
 		}

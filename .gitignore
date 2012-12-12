@@ -16,3 +16,6 @@
 
 # Eclipse stuff
 .project
+
+# gedit
+*.*~
