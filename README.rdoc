@@ -20,6 +20,10 @@ host: http://around-me.heroku.com
 
 - http://around-me.heroku.com/landmarks/casadamusica/events.xml
 
+==Get Event with id example (id field of events.json. not fb_id):
+
+- http://around-me.heroku.com/events/1.json
+
 ==Add Landmark:
 
 - http://around-me.heroku.com/landmarks/new
@@ -27,9 +31,9 @@ host: http://around-me.heroku.com
 - done!
 
 ===IMPORTANT
-Always use username.toLowerCase on url's
+Always use fb_username.toLowerCase on url's
 
-===EXAMPLE:
+=======Example:
 
 Landmark Name: Coliseu do Porto
 
