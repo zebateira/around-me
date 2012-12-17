@@ -32,8 +32,8 @@ class FbConnection
 
 ######## FETCH LANDMARK
 
-	def fetch_landmark(landmark)
-    response = http_request(generate_request landmark[:username], Landmark::LANDMARK_FIELDS)
+	def fetch_landmark(landmark_username)
+    response = http_request(generate_request landmark_username, Landmark::LANDMARK_FIELDS)
 
     newElements = {}
     response.each { |key, value| 

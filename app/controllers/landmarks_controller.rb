@@ -14,18 +14,23 @@ class LandmarksController < ApplicationController
     end
   end
 
-  # GET /landmarks/1
   # GET /landmarks/1.json
   # GET /landmarks/1.xml
   def show
     @landmark = Landmark.find(params[:id])
+		fb_connection = FbConnection.new
 
 		if params.include?('update')
-			
+			puts 'updating landmark ' + @landmark.fb_id + '...'
+			@landmark.update_attributes(fb_connection.fetch_landmark(@landmark.username))
+			puts 'landmark ' + @landmark.fb_id + ' updated.'
+
+			if params.include?('events')
+				fb_connection.set_events(@landmark)
+			end
 		end
     
     respond_to do |format|
-      format.html # show.html.erb
       format.json { render json: @landmark }
       format.xml { render xml: @landmark }
     end
@@ -55,7 +60,7 @@ class LandmarksController < ApplicationController
 		fb_connection = FbConnection.new
 
 		puts 'fetching ' + params[:landmark][:username] + '...'
-		@landmark = Landmark.create fb_connection.fetch_landmark params[:landmark]
+		@landmark = Landmark.create fb_connection.fetch_landmark params[:landmark][:username]
 		puts 'landmark ' + @landmark.username + ' created.'
 
 		fb_connection.set_events(@landmark)
