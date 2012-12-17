@@ -19,6 +19,10 @@ class LandmarksController < ApplicationController
   # GET /landmarks/1.xml
   def show
     @landmark = Landmark.find(params[:id])
+
+		if params.include?('update')
+			
+		end
     
     respond_to do |format|
       format.html # show.html.erb
@@ -48,7 +52,23 @@ class LandmarksController < ApplicationController
   # POST /landmarks
   # POST /landmarks.json
   def create
-    redirect_to :controller => 'fb_connections', :action => 'fetch_landmark', :landmark => params[:landmark]
+		fb_connection = FbConnection.new
+
+		puts 'fetching ' + params[:landmark][:username] + '...'
+		@landmark = Landmark.create fb_connection.fetch_landmark params[:landmark]
+		puts 'landmark ' + @landmark.username + ' created.'
+
+		fb_connection.set_events(@landmark)
+    
+    respond_to do |format|
+      if @landmark.save
+        format.html { redirect_to @landmark, notice: 'Landmark was successfully fetched.' }
+        format.json { render json: @landmark, status: :created, location: @landmark }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @landmark.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /landmarks/1
