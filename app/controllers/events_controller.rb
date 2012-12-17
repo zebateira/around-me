@@ -5,8 +5,14 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   # GET /events/1.xml
-  def event
+  def show
     @event = Event.find(params[:id])
+
+		if params.include?('update')
+			puts 'updating event ' + @event.fb_id + '...'
+			@event.update_attributes(FbConnection.new.fetch_event(@event.fb_id))
+			puts 'event ' + @event.fb_id + ' updated.'
+		end
     
     respond_to do |format|
       format.json { render json: @event }

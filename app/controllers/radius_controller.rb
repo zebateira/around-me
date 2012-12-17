@@ -2,10 +2,9 @@ require 'json'
 require 'rack'
 
 class RadiusController < ApplicationController
-  
+
   def http_request(url)
     uri = URI.parse(url)
-    response = Net::HTTP.get_response(uri) # ?
     http = Net::HTTP.new(uri.host, uri.port)
     JSON.parse http.request(Net::HTTP::Get.new(uri.request_uri)).body
   end
