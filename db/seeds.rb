@@ -3,8 +3,8 @@
 	fb_connection = FbConnection.new
 
 	puts 'fetching ' + landmark_username + '...'
-	landmark = Landmark.create fb_connection.fetch_landmark(:username => landmark_username)
-	puts 'landmark ' + landmark.username + ' created.'
+	landmark = Landmark.create fb_connection.fetch_landmark(landmark_username)
+	puts 'landmark ' + landmark_username + ' created.'
 
 	fb_connection.set_events(landmark)
 }
