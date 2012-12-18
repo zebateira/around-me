@@ -16,5 +16,5 @@ class Landmark < ActiveRecord::Base
 
 	LANDMARK_FIELDS_DEPTH1 = ['street', 'city', 'country', 'zip', 'latitude', 'longitude', 'cover_id', 'source']
 
-	LANDMARK_INDEX_FIELDS = [:username, :name ]
+	LANDMARK_INDEX_FIELDS = [:username, :name]
 end

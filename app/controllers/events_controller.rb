@@ -7,17 +7,16 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
-Thread.abort_on_exception = true
 
 		if params.include?('update')
 			puts 'Forcing event update...'
-				update
+				update @event
 		else
 			update_thread = Thread.new do
 				sleep(1)
 
 				if FbConnection.new.is_event_outdated @event
-					update
+					update @event
 				else
 					puts 'Event ' + @event.fb_id + ' up to date.'
 				end
@@ -31,12 +30,12 @@ Thread.abort_on_exception = true
   end
 
 
-	def update
+	def update(event)
 		fb_connection =	FbConnection.new
 	
-		puts 'Updating outdated event ' + @event.fb_id + '...'
-		@event.update_attributes(fb_connection.fetch_event(@event.fb_id))
-		puts 'Event ' + @event.fb_id + ' updated.'
+		puts 'Updating outdated event ' + event.fb_id + '...'
+		event.update_attributes(fb_connection.fetch_event(event.fb_id))
+		puts 'Event ' + event.fb_id + ' updated.'
 	end
 
   # DELETE /event/destroy/1

@@ -1,4 +1,4 @@
-['casadamusica', 'ColiseuPorto', 'fundacaoserralves', 'ClubRivoliPorto', 'contagiarte', 'HardClubPorto', 'FnacPortugal', 'RuaDireitaCaminha', 'SudoesteTMN', 'multiusosgondomar'].each { |landmark_username|
+['casadamusica', 'ColiseuPorto', 'fundacaoserralves', 'contagiarte', 'HardClubPorto', 'FnacPortugal', 'multiusosgondomar'].each { |landmark_username|
     
 	fb_connection = FbConnection.new
 

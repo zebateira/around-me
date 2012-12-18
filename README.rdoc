@@ -8,6 +8,12 @@ host: http://around-me.heroku.com
 
 - http://around-me.heroku.com/landmarks.xml
 
+==Get all Landmarks with radius filter example:
+
+- http://around-me.heroku.com/landmarks.json?radius=3.0&latitude=41.150537&longitude=-8.586245
+
+- http://around-me.heroku.com/landmarks.xml?radius=3.0&latitude=41.150537&longitude=-8.586245
+
 ==Get Landmark with username example:
 
 - http://around-me.heroku.com/landmarks/casadamusica.json
@@ -31,12 +37,18 @@ host: http://around-me.heroku.com
 - done!
 
 ===IMPORTANT
-Always use fb_username.toLowerCase on url's
-
-=======Example:
+Always use fb_username.toLowerCase on requests. Example:
 
 Landmark Name: Coliseu do Porto
 
 FB username:   ColiseuPorto
 
 request:       http://around-me.heroku.com/landmarks/coliseuporto.json
+
+==Force Updates
+
+===Force update on landmark data example:
+
+- http://around-me.heroku.com/landmarks.json?update - updates landmark's data (events' data not included
+- http://around-me.heroku.com/landmarks.json?update&events - updates landmark's data (events' data included) - use with caution! can take awhile to update all the events of that landmark!
+

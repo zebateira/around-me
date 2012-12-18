@@ -1,12 +1,10 @@
 AroundMe::Application.routes.draw do
   # events and landmarks
-  resources :landmarks
+  resources :landmarks # TODO clean: divide by match
   match 'landmarks/:id/events.:format' => 'landmarks#events'
   match 'events/:id.:format' => 'events#show'
   match 'events/destroy/:id' => 'events#destroy'
 
-  match 'radius.:format' => 'radius#haversine_distance'
-  
   root :to => 'landmarks#index'
 
   # The priority is based upon order of creation:
