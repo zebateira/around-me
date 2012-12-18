@@ -19,21 +19,19 @@ class LandmarksController < ApplicationController
   def show
     @landmark = Landmark.find(params[:id])
 
-		puts '#####Time.now = ' + Time.now.to_s
-		puts '#####last update = ' + @landmark.updated_at.to_s
-
-		puts '#####dif = ' + (Time.now - @landmark.updated_at).to_s
-		puts '#####outdated limit = ' + FbConnection::OUTDATED_LIMIT.to_s
+		Thread.abort_on_exception = true
 
 		if params.include?('update')
+			puts 'Forcing landmark update...'
 			update params.include?('events')
-		end
-
-		update_thread = Thread.new do
-			sleep(3)
-
-			if FbConnection.new.isOutdated @landmark
-				update false
+		else
+			update_thread = Thread.new do
+				sleep(1)
+				if FbConnection.new.is_outdated @landmark
+					update false
+				else
+					puts 'Landmark ' + @landmark.username + ' up to date.'
+				end
 			end
 		end
     
@@ -46,10 +44,10 @@ class LandmarksController < ApplicationController
 
 	def update(update_events)
 		fb_connection = FbConnection.new
-
-		puts 'updating landmark ' + @landmark.fb_id + '...'
+		
+		puts 'Landmark ' + @landmark.username + ':' + @landmark.fb_id + ' outdated since ' + @landmark.updated_at.to_s + '. Starting update...'
 		@landmark.update_attributes(fb_connection.fetch_landmark(@landmark.username))
-		puts 'landmark ' + @landmark.fb_id + ' updated.'
+		puts 'Landmark ' + @landmark.username + ':' + @landmark.fb_id + ' updated.'
 
 		if update_events
 			fb_connection.set_events(@landmark)

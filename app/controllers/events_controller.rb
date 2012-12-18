@@ -7,16 +7,20 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
+Thread.abort_on_exception = true
 
 		if params.include?('update')
+			puts 'Forcing event update...'
 				update
-		end
+		else
+			update_thread = Thread.new do
+				sleep(1)
 
-		update_thread = Thread.new do
-			sleep(3)
-
-			if FbConnection.new.isOutdated @event
-				update
+				if FbConnection.new.is_event_outdated @event
+					update
+				else
+					puts 'Event ' + @event.fb_id + ' up to date.'
+				end
 			end
 		end
     
@@ -28,9 +32,11 @@ class EventsController < ApplicationController
 
 
 	def update
-		puts 'updating event ' + @event.fb_id + '...'
-		@event.update_attributes(FbConnection.new.fetch_event(@event.fb_id))
-		puts 'event ' + @event.fb_id + ' updated.'
+		fb_connection =	FbConnection.new
+	
+		puts 'Updating outdated event ' + @event.fb_id + '...'
+		@event.update_attributes(fb_connection.fetch_event(@event.fb_id))
+		puts 'Event ' + @event.fb_id + ' updated.'
 	end
 
   # DELETE /event/destroy/1
@@ -38,6 +44,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
 
-    redirect_to :controller => 'landmarks', :action => 'index'
+    redirect_to :controller => 'landmarks', :action => 'index', notice: 'Event successfully destroyed.'
   end
 end

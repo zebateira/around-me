@@ -12,10 +12,11 @@ class FbConnection
 	FB_GRAPH_API = 'http://graph.facebook.com'
 	FB_GRAPH_API_HTTPS = 'https://graph.facebook.com'
 
-	# maximum number of hours of outdated information
-	HOURS_TO_UPDATE = 0.5
-	
-	OUTDATED_LIMIT = HOURS_TO_UPDATE * 60 * 60
+	# maximum number of hours of outdated landmark
+	HOURS_MULT = 60 * 60
+
+	OUTDATED_LIMIT_LANDMARK = 1.0 * HOURS_MULT
+	OUTDATED_LIMIT_EVENT = 24.0 * HOURS_MULT
 
 	def initialize
     @oauth = Koala::Facebook::OAuth.new(FbConnection::APP_ID, FbConnection::APP_SECRET, FbConnection::CALLBACK_URL)
@@ -100,8 +101,15 @@ class FbConnection
     FbConnection::FB_GRAPH_API + '/' + username + '?' + fields.join(',')
   end
 
-	def isOutdated(object)
-		(Time.now - object.updated_at) > OUTDATED_LIMIT
+	def is_outdated(object)
+		(Time.now - object.updated_at) > OUTDATED_LIMIT_LANDMARK
+	end
+
+	def is_event_outdated(event)
+		updated_time = @graph.get_object(event.fb_id, {'fields' => 'updated_time'})['updated_time']
+		latest_updated_time = Time.parse(updated_time)
+
+		return ((latest_updated_time > Time.parse(event.updated_time)) or ((Time.now - latest_updated_time) > OUTDATED_LIMIT_EVENT))
 	end
 
 end
