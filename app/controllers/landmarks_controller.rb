@@ -18,15 +18,22 @@ class LandmarksController < ApplicationController
   # GET /landmarks/1.xml
   def show
     @landmark = Landmark.find(params[:id])
-		fb_connection = FbConnection.new
+
+		puts '#####Time.now = ' + Time.now.to_s
+		puts '#####last update = ' + @landmark.updated_at.to_s
+
+		puts '#####dif = ' + (Time.now - @landmark.updated_at).to_s
+		puts '#####outdated limit = ' + FbConnection::OUTDATED_LIMIT.to_s
 
 		if params.include?('update')
-			puts 'updating landmark ' + @landmark.fb_id + '...'
-			@landmark.update_attributes(fb_connection.fetch_landmark(@landmark.username))
-			puts 'landmark ' + @landmark.fb_id + ' updated.'
+			update params.include?('events')
+		end
 
-			if params.include?('events')
-				fb_connection.set_events(@landmark)
+		update_thread = Thread.new do
+			sleep(3)
+
+			if FbConnection.new.isOutdated @landmark
+				update false
 			end
 		end
     
@@ -34,7 +41,20 @@ class LandmarksController < ApplicationController
       format.json { render json: @landmark }
       format.xml { render xml: @landmark }
     end
+
   end
+
+	def update(update_events)
+		fb_connection = FbConnection.new
+
+		puts 'updating landmark ' + @landmark.fb_id + '...'
+		@landmark.update_attributes(fb_connection.fetch_landmark(@landmark.username))
+		puts 'landmark ' + @landmark.fb_id + ' updated.'
+
+		if update_events
+			fb_connection.set_events(@landmark)
+		end
+	end
 
   # GET /landmarks/new
   # GET /landmarks/new.json
@@ -47,11 +67,6 @@ class LandmarksController < ApplicationController
       format.json { render json: @landmark }
       format.xml { render xml: @landmark }
     end
-  end
-
-  # GET /landmarks/1/edit
-  def edit
-    @landmark = Landmark.find(params[:id])
   end
 
   # POST /landmarks
@@ -71,22 +86,6 @@ class LandmarksController < ApplicationController
         format.json { render json: @landmark, status: :created, location: @landmark }
       else
         format.html { render action: "new" }
-        format.json { render json: @landmark.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /landmarks/1
-  # PUT /landmarks/1.json
-  def update
-    @landmark = Landmark.find(params[:id])
-
-    respond_to do |format|
-      if @landmark.update_attributes(params[:landmark])
-        format.html { redirect_to @landmark, notice: 'Landmark was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
         format.json { render json: @landmark.errors, status: :unprocessable_entity }
       end
     end

@@ -3,8 +3,6 @@ require 'net/http'
 require 'net/https'
 
 class FbConnection
-  # attr_accessible :title, :body
-
 	# OAUTH
 	CALLBACK_URL = 'http://around-me.herokuapp.com/'
 	APP_ID = '360645504021378'
@@ -14,21 +12,15 @@ class FbConnection
 	FB_GRAPH_API = 'http://graph.facebook.com'
 	FB_GRAPH_API_HTTPS = 'https://graph.facebook.com'
 
+	# maximum number of hours of outdated information
+	HOURS_TO_UPDATE = 0.5
+	
+	OUTDATED_LIMIT = HOURS_TO_UPDATE * 60 * 60
+
 	def initialize
     @oauth = Koala::Facebook::OAuth.new(FbConnection::APP_ID, FbConnection::APP_SECRET, FbConnection::CALLBACK_URL)
     @graph = Koala::Facebook::API.new(@oauth.get_app_access_token)
 	end
-
-  def http_request(url)
-    uri = URI.parse(url)
-
-    http = Net::HTTP.new(uri.host, uri.port)
-    JSON.parse http.request(Net::HTTP::Get.new(uri.request_uri)).body
-  end
-
-  def generate_request(username, fields)
-    FbConnection::FB_GRAPH_API + '/' + username + '?' + fields.join(',')
-  end
 
 ######## FETCH LANDMARK
 
@@ -93,6 +85,23 @@ class FbConnection
 		newElements['picture_url'] = http_request(FbConnection::FB_GRAPH_API + '/' + event_id + '/picture?type=large&redirect=false')['data']['url']
 
 		return newElements
+	end
+
+####### Utils
+
+  def http_request(url)
+    uri = URI.parse(url)
+
+    http = Net::HTTP.new(uri.host, uri.port)
+    JSON.parse http.request(Net::HTTP::Get.new(uri.request_uri)).body
+  end
+
+  def generate_request(username, fields)
+    FbConnection::FB_GRAPH_API + '/' + username + '?' + fields.join(',')
+  end
+
+	def isOutdated(object)
+		(Time.now - object.updated_at) > OUTDATED_LIMIT
 	end
 
 end

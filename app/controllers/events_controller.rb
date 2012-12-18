@@ -9,9 +9,15 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
 		if params.include?('update')
-			puts 'updating event ' + @event.fb_id + '...'
-			@event.update_attributes(FbConnection.new.fetch_event(@event.fb_id))
-			puts 'event ' + @event.fb_id + ' updated.'
+				update
+		end
+
+		update_thread = Thread.new do
+			sleep(3)
+
+			if FbConnection.new.isOutdated @event
+				update
+			end
 		end
     
     respond_to do |format|
@@ -19,6 +25,13 @@ class EventsController < ApplicationController
       format.xml { render xml: @event }
     end
   end
+
+
+	def update
+		puts 'updating event ' + @event.fb_id + '...'
+		@event.update_attributes(FbConnection.new.fetch_event(@event.fb_id))
+		puts 'event ' + @event.fb_id + ' updated.'
+	end
 
   # DELETE /event/destroy/1
   def destroy
