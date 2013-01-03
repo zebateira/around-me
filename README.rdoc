@@ -30,12 +30,6 @@ host: http://around-me.heroku.com
 
 - http://around-me.heroku.com/events/1.json
 
-==Add Landmark:
-
-- http://around-me.heroku.com/landmarks/new
-- enter username (= fb username, meaning, with CamelCase)
-- done!
-
 ===IMPORTANT
 Always use fb_username.toLowerCase on requests. Example:
 
@@ -45,10 +39,22 @@ FB username:   ColiseuPorto
 
 request:       http://around-me.heroku.com/landmarks/coliseuporto.json
 
+
+==Add Landmark:
+
+- http://around-me.heroku.com/landmarks/new
+- enter username (= fb username, meaning, with CamelCase)
+- done!
+
 ==Force Updates
 
 ===Force update on landmark data example:
 
+<<<<<<< HEAD
 - http://around-me.heroku.com/landmarks.json?update - updates landmark's data (events' data not included)
 - http://around-me.heroku.com/landmarks.json?update&events - updates landmark's data (events' data included) - use with caution! can take a while to update all the events of that landmark!
+=======
+- http://around-me.heroku.com/landmarks/casadamusica.json?update - updates landmark's data (events' data not included)
+- http://around-me.heroku.com/landmarks/casadamusica.json?update&events - updates landmark's data (events' data included) - use with caution! can take awhile to update all the events of that landmark!
+>>>>>>> a6a6d2503a902c19a1b42166a3e5279d4eaef7b8
 
