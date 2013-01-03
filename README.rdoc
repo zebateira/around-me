@@ -50,6 +50,6 @@ request:       http://around-me.heroku.com/landmarks/coliseuporto.json
 
 ===Force update on landmark data example:
 
-- http://around-me.heroku.com/landmarks.json?update - updates landmark's data (events' data not included)
-- http://around-me.heroku.com/landmarks.json?update&events - updates landmark's data (events' data included) - use with caution! can take awhile to update all the events of that landmark!
+- http://around-me.heroku.com/landmarks/casadamusica.json?update - updates landmark's data (events' data not included)
+- http://around-me.heroku.com/landmarks/casadamusica.json?update&events - updates landmark's data (events' data included) - use with caution! can take awhile to update all the events of that landmark!
 
