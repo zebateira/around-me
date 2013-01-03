@@ -4,6 +4,7 @@ AroundMe::Application.routes.draw do
   match 'landmarks/:id/events.:format' => 'landmarks#events'
   match 'events/:id.:format' => 'events#show'
   match 'events/destroy/:id' => 'events#destroy'
+  match 'landmarks/destroy/:id' => 'landmarks#destroy'
 
   root :to => 'landmarks#index'
 

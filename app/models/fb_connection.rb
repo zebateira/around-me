@@ -16,7 +16,7 @@ class FbConnection
 	HOURS_MULT = 60 * 60
 
 	OUTDATED_LIMIT_LANDMARK = 1.0 * HOURS_MULT
-	OUTDATED_LIMIT_EVENT = 24.0 * HOURS_MULT
+	OUTDATED_LIMIT_EVENT = 1.0 * HOURS_MULT
 
 	def initialize
     @oauth = Koala::Facebook::OAuth.new(FbConnection::APP_ID, FbConnection::APP_SECRET, FbConnection::CALLBACK_URL)
